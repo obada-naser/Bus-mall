@@ -10,7 +10,7 @@ let imageNo1=document.getElementById("imageNo1");
 let imageNo2=document.getElementById("imageNo2");
 let imageNo3=document.getElementById("imageNo3")
 
-let maxAttempts=10;
+let maxAttempts=25;
 let noOfAttempts=0;
 
 let randomImage1=0;
@@ -102,7 +102,7 @@ renderImages();
 imageContainer.addEventListener('click',productChooser);
 
 
-// let newparent=document.getElementById('submit',submitResults)
+
 
 
 
@@ -131,22 +131,18 @@ function productChooser(event){
     else{
        
         
+        
+        
         imageContainer.removeEventListener('click',productChooser);
-        let parent=document.getElementById('choosen-Images');
-        let newparent=document.getElementById('results');
-        newparent.addEventListener('submit',submitResults);
-
+        
+        
         let ulElement=document.createElement('ul');
-        parent.appendChild(ulElement);
+        newparent.appendChild(ulElement);
         for(let i=0;i< buss.products.length;i++){
             let liElement=document.createElement('li');
             ulElement.appendChild(liElement);
         liElement.textContent=`the image ${buss.products[i].product} has been choosen  ${buss.products[i].choosenImage} times and appeared ${buss.products[i].showtimes}    `
          }
-
-        
-        
-           
             
         
         }
@@ -160,15 +156,23 @@ function productChooser(event){
    
 
     
-    function submitResults(event){
-
-   
-   
         
-        }
-
+   
+    // let parent=document.getElementById('results');
+       
+    // parent.addEventListener('submit',submitResults)
     
-        
+    // function submitResults(event){
+    //     let ulElement=document.createElement('ul');
+    //     newparent.appendChild(ulElement);
+    //     for(let i=0;i< buss.products.length;i++){
+    //         let liElement=document.createElement('li');
+    //         ulElement.appendChild(liElement);
+    //     liElement.textContent=`the image ${buss.products[i].product} has been choosen  ${buss.products[i].choosenImage} times and appeared ${buss.products[i].showtimes}    `
+    //      }
 
    
+   
+        
+    //     }
 
