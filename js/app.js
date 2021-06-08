@@ -25,6 +25,7 @@ let showTimesImages=[];
 
 
 
+
 //bus constructor
 
 function bus(product,imgSource){
@@ -32,6 +33,7 @@ function bus(product,imgSource){
     this.imgSource=imgSource;
     this.choosenImage=0;
     this.showTimes=0;
+   
     
 
     
@@ -40,10 +42,44 @@ function bus(product,imgSource){
    
     bus.products.push(this);
     
+    
+   
 
+    
 }
 
 bus.products=[];
+
+
+
+function updateStorage(){
+    let productString=JSON.stringify(bus.products);
+    
+
+    localStorage.setItem('bus',productString);
+    console.log(productString);
+}
+
+function getPreviousResults(){
+    let info=localStorage.getItem('bus');
+    
+    let returnObject=JSON.parse(info);
+
+    if(returnObject!==null){
+        bus.products=returnObject;
+
+    }
+
+console.log(returnObject);
+    
+
+}
+
+
+
+
+
+
 
 //images with sources
 new bus('bag','img/bag.jpg');
@@ -184,9 +220,13 @@ function productChooser(event){
 
          }
         
-        
-        
+         
+         updateStorage();
          barChart();
+        
+         
+        
+
 
         
         }
@@ -203,7 +243,7 @@ function productChooser(event){
    
 
     
-        
+    getPreviousResults();
    
    
        
@@ -223,6 +263,7 @@ function productChooser(event){
         document.getElementById("results").style.display = "none";
         
         }
+        
 
 
    //Bar chart function     
